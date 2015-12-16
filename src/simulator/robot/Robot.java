@@ -1,20 +1,32 @@
 package simulator.robot;
 
+import simulator.target.Target;
+
+import java.util.ArrayList;
+
 abstract public class Robot {
-    protected int x, y;
-    protected int speed;
+    protected double x, y;
+    protected double speed;
+    protected ArrayList<Target> targets;
 
-    abstract void doStep();
-    abstract void targetDone();
+    abstract public void doStep();
+    abstract public void targetDone();
+    abstract public void whoNear();
 
+
+
+    public void addTarget(Target newTarget) {
+        if (targets == null) targets = new ArrayList<>();
+        targets.add(newTarget);
+    }
 
     // ------- getter and setter region start -------//
-    public int getX() {return x;}
-    public int getY() {return y;}
-    public int getSpeed() {return speed;}
+    public double getX() {return x;}
+    public double getY() {return y;}
+    public double getSpeed() {return speed;}
 
-    public void setX(int x) {this.x = x;}
-    public void setY(int y) {this.y = y;}
-    public void setSpeed(int speed) {this.speed = speed;}
+    public void setX(double x) {this.x = x;}
+    public void setY(double y) {this.y = y;}
+    public void setSpeed(double speed) {this.speed = speed;}
     // ------- getter and setter region end   -------//
 }

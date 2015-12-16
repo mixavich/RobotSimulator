@@ -1,11 +1,35 @@
 package simulator.simulation;
 
+import simulator.configuration.Configuration;
+import simulator.robot.Robot;
+import simulator.target.Target;
+
+import java.util.ArrayList;
+
 public class DefaultSimulation implements Simulation {
+
+    private ArrayList<Robot> robots = new ArrayList<>();
 
     @Override
     public void execute() {
         System.out.println("Начало симуляции");
-        for (int i = 0; i < 5; i++)
+
+        robots = new ArrayList<>();
+
+        Configuration conf = Configuration.getInstance();
+        Target target = conf.newTargetInstance();
+        target.setX(10);
+        target.setY(10);
+        target.setSize(10);
+
+        Robot robot = conf.newRobotInstance();
+        robot.setX(90);
+        robot.setY(90);
+        robot.setSpeed(5);
+        robot.addTarget(target);
+        robots.add(robot);
+
+        for (int i = 0; i < 25; i++)
             nextIteration();
         stop();
     }
@@ -17,6 +41,6 @@ public class DefaultSimulation implements Simulation {
 
     @Override
     public void nextIteration() {
-        System.out.println("следующая итерация");
+        robots.forEach(Robot::doStep);
     }
 }

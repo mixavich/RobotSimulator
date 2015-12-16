@@ -1,5 +1,4 @@
-какой-то класс
-еще один класс
-больше классов богу классов
-последний класс
-еще каие-то данные
+simulator.simulation.DefaultSimulation
+simulator.robot.DefaultRobot
+simulator.target.DefaultTarget
+simulator.field.DefaultField
